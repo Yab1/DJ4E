@@ -1,0 +1,17 @@
+<h1>Current request path {{request.path}}</h1>
+
+{% if user.is_authenticated %}
+<p>Authenticated as</p>
+<pre>
+ Name: {{user.get_full_name}}
+ Email: {{user.email}}
+ ID: {{user.id}}
+</pre>
+<p>
+  You can
+  <a href="{% url 'logout' %}?next={% url 'forms:guess_form' %}">logout</a> here
+</p>
+{% else %}
+<p>You are not logged in</p>
+<a href="{% url 'login' %}?next={% url 'forms:guess_form' %}">login</a>
+{% endif %}

@@ -1,0 +1,9 @@
+{% extends 'template.html' %} {% block content %}
+<h2>List of Cats</h2>
+
+<ul>
+  {% for cat in cat_list %}
+  <li><a href="{% url 'polls:cat_detail' cat.id %}">{{cat.name}}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}

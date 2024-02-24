@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice</title>
+  </head>
+  <body>
+    <h1>Hello From Django</h1>
+    <p>This is a inherited template</p>
+    <nav>
+      <ul>
+        <li><a href="{% url 'polls:users' %}">Users</a></li>
+        <li><a href="{% url 'polls:template' %} ">Template</a></li>
+        <li><a href="{% url 'polls:rest' 42%}">Rest</a></li>
+        <li><a href="{% url 'polls:danger' %}">Danger</a></li>
+        <li><a href="{% url 'polls:redirect' %}">Redirect</a></li>
+        <li><a href="{% url 'polls:cats' %}">Cats</a></li>
+        <li><a href="{% url 'polls:dogs' %}">Dogs</a></li>
+      </ul>
+    </nav>
+
+    {%block content%} {%endblock%}
+  </body>
+</html>

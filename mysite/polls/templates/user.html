@@ -1,0 +1,7 @@
+{%extends 'template.html'%} {%block content%} {% for user in user_detail %}
+
+<h3>{{user.id}}: {{user.name}}</h3>
+<p>{{user.email}}</p>
+{% endfor %}
+<a href="{% url 'polls:users' %}">Go back to users list</a>
+{% endblock%}

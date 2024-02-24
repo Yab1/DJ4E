@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+  </head>
+  <body>
+    {% if form.error%}
+    <p>Your username and password did not match. Please try again!</p>
+    {% endif %} {% if next %} {% if user.is_authenticated %}
+    <p>
+      Your account does not have access to this page. To proceed please login
+      with an account that has access
+    </p>
+    {% else %}
+    <p>Please Login to see this site</p>
+    {% endif %} {% endif %}
+
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %} {{form.as_p}}
+      <input type="submit" class="btn btn-primary" value="Login" />
+      <input type="hidden" name="next" value="{{next}}" />
+    </form>
+  </body>
+</html>

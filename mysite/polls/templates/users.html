@@ -1,0 +1,10 @@
+{%extends 'template.html'%} {% block content%}
+<h2>List of Registered Users</h2>
+<ol type="1">
+  {% for user in users %}
+  <li>
+    <a href="{% url 'polls:user_details' user.id %}">{{user.name}}</a>
+  </li>
+  {% endfor %}
+</ol>
+{%endblock%}

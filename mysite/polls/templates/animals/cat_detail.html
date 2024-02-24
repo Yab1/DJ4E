@@ -1,0 +1,7 @@
+{%extends 'template.html'%} {%block content%}
+<h2 style="text-decoration: underline">Cat Name</h2>
+{% for detail in cat_detail %}
+<h2 style="color: blue">{{detail.name}}</h2>
+{% endfor %}
+<a href="{% url 'polls:cats' %}">Go back to cats list</a>
+{% endblock %}

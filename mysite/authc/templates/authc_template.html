@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Authentication</title>
+  </head>
+  <body>
+    <h1>
+      Current Request Path:
+      <span style="color: deeppink">{{request.path}}</span>
+    </h1>
+
+    {% if user.is_authenticated %}
+    <p>Authenticated As:</p>
+    <pre>
+      Name: {{user.username}}
+      Email: {{user.email}}
+      ID: {{user.id}}
+    </pre>
+    <p>
+      You can <a href="{% url 'login' %}?next={% url 'authc:open' %}">Logout</a>
+    </p>
+    {% else %}
+    <p>You are not Loged in</p>
+    <p>
+      You can <a href="{% url 'login' %}?next={{ request.path }}">Login</a> if
+      you want
+    </p>
+    {% endif %}
+    <nav>
+      <ul>
+        <li><a href="{% url 'authc:home' %}">Home</a></li>
+        <li>
+          <a href="{% url 'authc:open' %}">{% url 'authc:open' %}</a>
+          (no login required)
+        </li>
+        <li>
+          <a href="{% url 'authc:apereo' %}">{% url 'authc:apereo' %}</a> (no
+          login required)
+        </li>
+        <li>
+          <a href="{% url 'authc:manual_protect' %}"
+            >{% url 'authc:manual_protect' %}</a
+          >
+          (protected by user.is_authenticated)
+        </li>
+        <li>
+          <a href="{% url 'authc:protect_view' %}"
+            >{% url 'authc:protect_view' %}</a
+          >
+          (protected by LoginRequiredMixin)
+        </li>
+        <li>
+          <a href="{% url 'authc:dump_python' %}"
+            >{% url 'authc:dump_python' %}</a
+          >
+          ( dump request. user data in python )
+        </li>
+        <li>
+          <a href="{% url 'authc:example' %}">{% url 'authc:example' %}</a>
+          ( example form )
+        </li>
+      </ul>
+    </nav>
+    {% block content%} {% endblock%}
+  </body>
+</html>
